@@ -1,6 +1,10 @@
 module Main where
 
 import Lib
+import Sym
 
 main :: IO ()
-main = someFunc
+main = thing
+
+nummm :: IO ()
+nummm = thing

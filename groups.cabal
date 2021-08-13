@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Sym
   other-modules:
       Paths_groups
   hs-source-dirs:

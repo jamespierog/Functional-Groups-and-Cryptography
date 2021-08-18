@@ -27,8 +27,20 @@ elem1 = Id
 elem2 :: Transposition
 elem2 = T (1,2)
 
+elem3 :: Transposition
+elem3 = T (2,3)
+
+elem4 :: Transposition
+elem4 = T (3,4)
+
 x :: Element
 x = E [elem1, elem2]
+
+y :: Element
+y = E [elem3, elem4, elem1]
+
+
+
 
 -- Elements of the symmetric group will be represented by lists of transpositions OR by lists of disjoint cycles...
 -- If there is a unique representation that can be obtained by a list of adjecent transpositions then we will use that
@@ -46,5 +58,28 @@ x = E [elem1, elem2]
 -- This function takes an element and simplifies it down to its unique normal form
 -- simplify :: Element -> Element
 -- simplify (E list) =
+
+data Cycle = C [Int]
+
+instance Show Cycle where
+  show (C list) = show list
+
+cycle1 :: Cycle
+cycle1 = C [1,2,3]
+
+cycle2 :: Cycle
+cycle2 = C [4,5]
+
+cycle3 :: Cycle
+cycle3 = C [2,4]
+
+data Normalized = N [Cycle]
+
+instance Show Normalized where
+  show (N list) = show list
+
+norm1 :: Normalized
+norm1 = N [cycle1, cycle2, cycle3]
+
 
 

@@ -37,17 +37,19 @@ instance Eq Cycle where
 -- make cycles a member of Eq typeclass (by comparning their normal form)
 
 c1 :: Cycle
-c1 = C [1,2,3]
-
-c1' :: Cycle
-c1' = C [2,3,1]
+c1 = C [1,2]
 
 c2 :: Cycle
-c2 = C [5,3,4]
+c2 = C [1,3]
 
 c3 :: Cycle
-c3 = C [15,5,12,13,7]
+c3 = C [2,3]
 
+c4 :: Cycle
+c4 = C [1,2,3]
+
+c5 :: Cycle
+c5 = C [1,3,2]
 
 -- Define a datatype of Sym n
 data Element = E [Cycle] | Identity
@@ -55,15 +57,41 @@ data Element = E [Cycle] | Identity
 instance Show Element where
   show (E list) = show list
 
+-- Define examples of elements which we can work with
 e1 :: Element
-e1 = E [c1, c2]
+e1 = E [c1]
 
 e2 :: Element
-e2 = E [c3, c2]
+e2 = E [c2]
 
--- Normalize elements of Sym n
+e3 :: Element
+e3 = E [c3]
 
--- Make them instances of Show and Eq typeclasses based on normal form
+e4 :: Element
+e4 = E [c1,c3]
+
+e5 :: Element
+e5 = E [c4]
+
+-- An element can be composed of one or many cycles BUT it needs to have a normal form
+-- What does the normal form look like?
+-- is [[1,2],[2,3]] a normal form or [[1,2,3]]? e4 == e5 is true
+-- The normal form should take up the least amount of data so therefore we should be able to simplify these elements to Nothing or E [something]
+
+
+
+instance Eq Element where
+  Identity == E [Id] = True
+  _ == _ = False
+
+-- Normalize elements of Sym n (what's the normal form of an element in the symmetric group)
+
+
+
+
+
+
+
 
 
 
